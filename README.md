@@ -39,3 +39,27 @@ npm start
 ```
 
 Abrir en el navegador: http://localhost:4201/
+
+## Testing (nivel básico)
+
+Este proyecto incluye los tests mínimos solicitados:
+
+- **Servicio:** verifica que `ReportService` devuelve datos.
+	- Archivo: [src/app/services/report.service.spec.ts](src/app/services/report.service.spec.ts)
+- **Componente:** verifica que `HomeComponent` se crea correctamente.
+	- Archivo: [src/app/components/home/home.component.spec.ts](src/app/components/home/home.component.spec.ts)
+
+### Comando para ejecutar los tests
+
+```bash
+npm test -- --watch=false
+```
+
+### Cómo verificar que se ejecutaron sin errores
+
+En la terminal verás un resumen similar a:
+
+```
+Chrome Headless ...: Executed 3 of 3 SUCCESS
+TOTAL: 3 SUCCESS
+```
