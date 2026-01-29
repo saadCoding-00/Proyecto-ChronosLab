@@ -6,31 +6,198 @@ endobj
 << /Type /Pages /Kids [3 0 R] /Count 1 >>
 endobj
 3 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> >>
 endobj
 4 0 obj
-<< /Length 86 >>
+<< /Length 2388 >>
 stream
+q
+0.12 0.22 0.45 rg
+0 760 612 32 re f
+1 1 1 rg
 BT
-/F1 18 Tf
-72 720 Td
-(Informe de ocio digital - ChronosLab) Tj
+/F2 16 Tf
+72 780 Td
+(ChronosLab | Informe tecnico) Tj
 ET
+0.9 0.92 0.97 rg
+0 728 612 24 re f
+0 0 0 rg
+BT
+/F2 14 Tf
+72 740 Td
+(Ocio digital) Tj
+ET
+BT
+/F1 11 Tf
+72 720 Td
+(Redes sociales y videojuegos) Tj
+0 -14 Td
+(Periodo: 2024-2025 | Version 1.1) Tj
+ET
+0.12 0.22 0.45 rg
+0 686 612 20 re f
+1 1 1 rg
+BT
+/F2 12 Tf
+72 692 Td
+(Resumen ejecutivo) Tj
+ET
+0 0 0 rg
+BT
+/F1 11 Tf
+72 662 Td
+(Analiza patrones de ocio digital y bienestar percibido.) Tj
+0 -14 Td
+(Identifica rangos de uso saludables y sobreexposicion.) Tj
+0 -14 Td
+(Propone acciones para familias, instituciones y plataformas.) Tj
+0 -14 Td
+ET
+0.12 0.22 0.45 rg
+0 606 612 20 re f
+1 1 1 rg
+BT
+/F2 12 Tf
+72 612 Td
+(Metodologia) Tj
+ET
+0 0 0 rg
+BT
+/F1 11 Tf
+72 582 Td
+(Tracking anonimo de sesiones y entrevistas semiestructuradas.) Tj
+0 -14 Td
+(Muestra: 980 usuarios activos.) Tj
+0 -14 Td
+(Segmentacion por edad, ocupacion y frecuencia.) Tj
+0 -14 Td
+ET
+0.12 0.22 0.45 rg
+0 526 612 20 re f
+1 1 1 rg
+BT
+/F2 12 Tf
+72 532 Td
+(Resultados clave) Tj
+ET
+0 0 0 rg
+BT
+/F1 11 Tf
+72 502 Td
+(Bienestar mas alto con sesiones de 60-90 minutos.) Tj
+0 -14 Td
+(Interaccion social moderada reduce aislamiento.) Tj
+0 -14 Td
+(Picos nocturnos reducen calidad de descanso.) Tj
+0 -14 Td
+ET
+0.12 0.22 0.45 rg
+0 446 612 20 re f
+1 1 1 rg
+BT
+/F2 12 Tf
+72 452 Td
+(Tabla de indicadores) Tj
+ET
+0 0 0 rg
+0.93 0.95 0.98 rg
+72 398 510 18 re f
+0 0 0 rg
+1 w
+72 344 m 72 416 l S
+242 344 m 242 416 l S
+352 344 m 352 416 l S
+462 344 m 462 416 l S
+582 344 m 582 416 l S
+72 416 m 582 416 l S
+72 398 m 582 398 l S
+72 380 m 582 380 l S
+72 362 m 582 362 l S
+72 344 m 582 344 l S
+BT
+/F2 9 Tf
+78 403 Td
+(Indicador) Tj
+248 0 Td
+(Valor) Tj
+358 0 Td
+(Fuente) Tj
+468 0 Td
+(Periodo) Tj
+ET
+BT
+/F1 9 Tf
+78 385 Td
+(Duracion saludable) Tj
+248 0 Td
+(60-90 min) Tj
+358 0 Td
+(Tracking) Tj
+468 0 Td
+(2025) Tj
+ET
+BT
+/F1 9 Tf
+78 367 Td
+(Pico nocturno) Tj
+248 0 Td
+(22:00-00:30) Tj
+358 0 Td
+(App logs) Tj
+468 0 Td
+(2024-2025) Tj
+ET
+BT
+/F1 9 Tf
+78 349 Td
+(Descanso percibido) Tj
+248 0 Td
+(-18%) Tj
+358 0 Td
+(Encuesta) Tj
+468 0 Td
+(2025) Tj
+ET
+0.12 0.22 0.45 rg
+0 322 612 20 re f
+1 1 1 rg
+BT
+/F2 12 Tf
+72 328 Td
+(Recomendaciones) Tj
+ET
+0 0 0 rg
+BT
+/F1 11 Tf
+72 298 Td
+(Limites de tiempo y recordatorios de descanso.) Tj
+0 -14 Td
+(Rutinas de sueno regulares y ocio presencial.) Tj
+0 -14 Td
+(Cierres naturales para evitar sesiones largas.) Tj
+0 -14 Td
+ET
+Q
 endstream
 endobj
 5 0 obj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
 endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
 xref
-0 6
+0 7
 0000000000 65535 f 
-0000000010 00000 n 
-0000000061 00000 n 
-0000000118 00000 n 
-0000000247 00000 n 
-0000000382 00000 n 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000251 00000 n 
+0000002690 00000 n 
+0000002760 00000 n 
 trailer
-<< /Root 1 0 R /Size 6 >>
+<< /Root 1 0 R /Size 7 >>
 startxref
-451
+2835
 %%EOF
