@@ -50,3 +50,10 @@ button.primary {
   color: #dc2626;
   font-size: 0.8rem;
 }
+
+
+.success {
+  margin-top: 12px;
+  color: #0f766e;
+  font-weight: 600;
+}

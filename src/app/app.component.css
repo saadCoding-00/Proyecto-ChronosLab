@@ -45,14 +45,24 @@
   font-weight: 500;
 }
 
-.site-nav a {
+.site-nav a,
+.site-nav .nav-link {
   padding: 6px 10px;
   border-radius: 8px;
   transition: background 0.2s ease;
 }
 
-.site-nav a:hover {
+.site-nav a:hover,
+.site-nav .nav-link:hover {
   background: #eef2ff;
+}
+
+.site-nav .nav-link {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
 }
 
 main {

@@ -8,6 +8,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class ContactComponent {
   private formBuilder = inject(FormBuilder);
+  submitted = false;
 
   form = this.formBuilder.group({
     name: ['', [Validators.required, Validators.minLength(2)]],
@@ -17,10 +18,12 @@ export class ContactComponent {
 
   submit(): void {
     if (this.form.invalid) {
+      this.submitted = false;
       this.form.markAllAsTouched();
       return;
     }
 
     this.form.reset();
+    this.submitted = true;
   }
 }
