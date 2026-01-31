@@ -6,7 +6,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px 8vw;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.94);
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(10px);
 }
@@ -24,7 +24,7 @@
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  background: var(--primary);
+  background: linear-gradient(135deg, var(--primary), #7c3aed);
   color: #fff;
   font-weight: 700;
 }
@@ -49,12 +49,13 @@
 .site-nav .nav-link {
   padding: 6px 10px;
   border-radius: 8px;
-  transition: background 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 .site-nav a:hover,
 .site-nav .nav-link:hover {
-  background: #eef2ff;
+  background: var(--primary-soft);
+  color: var(--primary);
 }
 
 .site-nav .nav-link {

@@ -1,0 +1,60 @@
+<section id="evaluador" class="time-evaluator">
+  <div class="section-header">
+    <p class="section-kicker">Diagnóstico rápido</p>
+    <h2>TimeEvaluator</h2>
+    <p>Explora cómo distribuyes tu tiempo digital y recibe recomendaciones personalizadas.</p>
+  </div>
+
+  <form [formGroup]="form" class="evaluator-form">
+    <label class="form-field">
+      <span>Perfil</span>
+      <select formControlName="profile">
+        <option value="estudiante">Estudiante</option>
+        <option value="teletrabajador">Teletrabajador</option>
+        <option value="gamer">Gamer</option>
+      </select>
+    </label>
+
+    <div class="form-grid">
+      <label class="form-field">
+        <span>Horas de estudio</span>
+        <input type="number" min="0" max="24" step="0.5" formControlName="studyHours" />
+      </label>
+      <label class="form-field">
+        <span>Horas de trabajo</span>
+        <input type="number" min="0" max="24" step="0.5" formControlName="workHours" />
+      </label>
+      <label class="form-field">
+        <span>Horas de videojuegos</span>
+        <input type="number" min="0" max="24" step="0.5" formControlName="gamingHours" />
+      </label>
+      <label class="form-field">
+        <span>Horas en redes sociales</span>
+        <input type="number" min="0" max="24" step="0.5" formControlName="socialHours" />
+      </label>
+    </div>
+  </form>
+
+  <div class="results">
+    <div class="results-summary">
+      <h3>Resultado</h3>
+      <p class="result-value">{{ productivePercent }}% productivo</p>
+      <p class="result-detail">Horas productivas: {{ productiveHours }} / {{ totalHours }} horas</p>
+    </div>
+
+    <div class="progress-wrapper">
+      <div class="progress-track">
+        <div [class]="progressClass" [style.width.%]="productivePercent"></div>
+      </div>
+      <div class="progress-labels">
+        <span>0%</span>
+        <span>100%</span>
+      </div>
+    </div>
+
+    <div class="result-message">
+      <h4>Recomendación</h4>
+      <p>{{ message }}</p>
+    </div>
+  </div>
+</section>

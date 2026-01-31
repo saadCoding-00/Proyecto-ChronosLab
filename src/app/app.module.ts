@@ -10,6 +10,7 @@ import { ServicesComponent } from './components/services/services.component';
 import { InformesComponent } from './components/informes/informes.component';
 import { ReportsComponent } from './components/reports/reports.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { TimeEvaluatorComponent } from './components/time-evaluator/time-evaluator.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ContactComponent } from './components/contact/contact.component';
     ServicesComponent,
     InformesComponent,
     ReportsComponent,
-    ContactComponent
+    ContactComponent,
+    TimeEvaluatorComponent
   ],
   imports: [BrowserModule, ReactiveFormsModule],
   providers: [],

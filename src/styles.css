@@ -3,12 +3,15 @@
   font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  --bg: #f6f7fb;
+  --bg: #f3f6ff;
   --surface: #ffffff;
-  --primary: #1f3cff;
-  --secondary: #111827;
-  --muted: #6b7280;
-  --border: #e5e7eb;
+  --surface-alt: #f8fafc;
+  --primary: #4f46e5;
+  --primary-soft: #e0e7ff;
+  --secondary: #0f172a;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
 }
 
 * {
@@ -18,7 +21,8 @@
 }
 
 body {
-  background: var(--bg);
+  background: radial-gradient(circle at top, #eef2ff 0%, var(--bg) 55%, #eef2ff 100%);
+  background-attachment: fixed;
   color: var(--secondary);
 }
 
