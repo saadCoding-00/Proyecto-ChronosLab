@@ -22,11 +22,17 @@ Para crear la estructura general de la aplicación en una sola página.
 
 Genera un HomeComponent que describa una empresa llamada ChronosLab dedicada al análisis del uso del tiempo en entornos digitales (estudiantes, teletrabajo, redes sociales y videojuegos).
 
+**Para qué se usó:**
+Para construir la sección de presentación con el enfoque de investigación de ChronosLab.
+
 ## Prompt 3 – Sección Servicios
 
 **Prompt usado:**
 
 Genera un ServicesComponent con tres servicios: análisis de productividad académica, estudios de ocio digital y optimización del teletrabajo.
+
+**Para qué se usó:**
+Para mostrar la oferta principal de servicios de ChronosLab.
 
 ## Prompt 4 – Sección Informes
 
@@ -34,11 +40,17 @@ Genera un ServicesComponent con tres servicios: análisis de productividad acad�
 
 Genera un ReportsComponent que muestre una lista de informes PDF almacenados en src/assets/pdfs y permita abrirlos o descargarlos.
 
+**Para qué se usó:**
+Para exponer informes descargables dentro de la web.
+
 ## Prompt 5 – Formulario de contacto
 
 **Prompt usado:**
 
 Genera un ContactComponent con un formulario reactivo con validación básica (nombre, email, mensaje).
+
+**Para qué se usó:**
+Para permitir que los usuarios contacten con ChronosLab.
 
 ## Prompt 6 – Servicio de informes
 
@@ -46,11 +58,17 @@ Genera un ContactComponent con un formulario reactivo con validación básica (n
 
 Crea un servicio Angular llamado ReportService que devuelva una lista de informes PDF.
 
+**Para qué se usó:**
+Para centralizar la gestión de informes y sus rutas.
+
 ## Prompt 7 – Test de servicio
 
 **Prompt usado:**
 
 Genera un test unitario sencillo para ReportService que compruebe que devuelve datos.
+
+**Para qué se usó:**
+Para validar que el servicio entrega informes correctamente.
 
 ## Prompt 8 – Test de componente
 
@@ -58,14 +76,41 @@ Genera un test unitario sencillo para ReportService que compruebe que devuelve d
 
 Genera un test unitario sencillo para HomeComponent que compruebe que se crea correctamente.
 
+**Para qué se usó:**
+Para verificar la creación del componente de inicio.
+
 ## Prompt 9 – Documentación JSDoc
 
 **Prompt usado:**
 
 Añade documentación JSDoc a ReportService y a dos de sus métodos.
 
+**Para qué se usó:**
+Para documentar el servicio y mejorar la mantenibilidad.
+
 ## Prompt 10 – Mejora de textos
 
 **Prompt usado:**
 
 Mejora los textos de la web ChronosLab para que sean más académicos y realistas.
+
+**Para qué se usó:**
+Para elevar el tono académico del contenido.
+
+## Prompt 11 – Evaluador inteligente de uso del tiempo
+
+**Objetivo:** añadir una funcionalidad interactiva avanzada a la web.
+
+**Prompt usado:**
+
+Genera un componente Angular llamado TimeEvaluatorComponent que permita al usuario seleccionar su perfil (estudiante, teletrabajador o gamer), introducir horas de estudio, trabajo, videojuegos y redes sociales, calcule un porcentaje de uso productivo del tiempo, y muestre el resultado con una barra de progreso de color verde, amarillo o rojo. Además, muestra un mensaje personalizado según el perfil y el resultado, con recomendaciones para mejorar la gestión del tiempo.
+
+**Para qué se usó:**
+Para añadir una herramienta interactiva que simula un servicio real de ChronosLab, permitiendo al usuario evaluar su uso del tiempo digital.
+
+**Qué se revisó o modificó:**
+- Se ajustó la fórmula de cálculo del porcentaje productivo.
+- Se definieron manualmente los rangos de colores (verde, amarillo y rojo).
+- Se personalizaron los mensajes según perfil.
+- Se adaptó el diseño visual a la estética de la web.
+- Se integró el componente dentro de la página principal.
