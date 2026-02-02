@@ -147,58 +147,112 @@ export class TimeEvaluatorComponent {
   generatePdf(): void {
     const values = this.form.getRawValue();
     const doc = new jsPDF();
+    const pageWidth = doc.internal.pageSize.getWidth();
+
+    const primary = { r: 79, g: 70, b: 229 };
+    const text = { r: 15, g: 23, b: 42 };
+    const muted = { r: 100, g: 116, b: 139 };
+
+    const addSectionTitle = (title: string, y: number): number => {
+      doc.setFillColor(238, 242, 255);
+      doc.roundedRect(12, y - 5, pageWidth - 24, 10, 3, 3, 'F');
+      doc.setTextColor(primary.r, primary.g, primary.b);
+      doc.setFontSize(12);
+      doc.setFont('helvetica', 'bold');
+      doc.text(title, 16, y + 2);
+      doc.setTextColor(text.r, text.g, text.b);
+      doc.setFont('helvetica', 'normal');
+      return y + 12;
+    };
 
     let y = 16;
+    doc.setFillColor(primary.r, primary.g, primary.b);
+    doc.rect(0, 0, pageWidth, 22, 'F');
+    doc.setTextColor(255, 255, 255);
     doc.setFontSize(16);
-    doc.text(this.pdfTitle(), 14, y);
-    y += 10;
+    doc.setFont('helvetica', 'bold');
+    doc.text(this.pdfTitle(), 14, 14);
 
-    doc.setFontSize(12);
-    doc.text(this.pdfUserDataTitle(), 14, y);
+    doc.setTextColor(text.r, text.g, text.b);
+    doc.setFont('helvetica', 'normal');
+    y = 32;
+
+    y = addSectionTitle(this.pdfUserDataTitle(), y);
+    doc.setFontSize(11);
+    doc.text(`${this.nameLabel()}:`, 16, y);
+    doc.setTextColor(muted.r, muted.g, muted.b);
+    doc.text(String(values.name), 70, y);
     y += 6;
-    doc.text(`${this.nameLabel()}: ${values.name}`, 14, y);
+    doc.setTextColor(text.r, text.g, text.b);
+    doc.text(`${this.lastNameLabel()}:`, 16, y);
+    doc.setTextColor(muted.r, muted.g, muted.b);
+    doc.text(String(values.lastName), 70, y);
     y += 6;
-    doc.text(`${this.lastNameLabel()}: ${values.lastName}`, 14, y);
-    y += 6;
-    doc.text(`${this.ageLabel()}: ${values.age}`, 14, y);
+    doc.setTextColor(text.r, text.g, text.b);
+    doc.text(`${this.ageLabel()}:`, 16, y);
+    doc.setTextColor(muted.r, muted.g, muted.b);
+    doc.text(String(values.age), 70, y);
     y += 8;
+    doc.setTextColor(text.r, text.g, text.b);
     const notes = values.notes?.trim();
     if (notes) {
-      doc.text(`${this.pdfNotesLabel()}:`, 14, y);
+      doc.text(`${this.pdfNotesLabel()}:`, 16, y);
       y += 6;
-      const notesLines = doc.splitTextToSize(notes, 180);
-      doc.text(notesLines, 14, y);
+      doc.setTextColor(muted.r, muted.g, muted.b);
+      const notesLines = doc.splitTextToSize(notes, pageWidth - 32);
+      doc.text(notesLines, 16, y);
+      doc.setTextColor(text.r, text.g, text.b);
       y += notesLines.length * 6 + 4;
     }
 
-    doc.text(this.pdfTimeDataTitle(), 14, y);
+    y = addSectionTitle(this.pdfTimeDataTitle(), y);
+    doc.setFontSize(11);
+    doc.text(`${this.profileLabel()}:`, 16, y);
+    doc.setTextColor(muted.r, muted.g, muted.b);
+    doc.text(this.getProfileLabel(values.profile), 70, y);
     y += 6;
-    doc.text(`${this.profileLabel()}: ${this.getProfileLabel(values.profile)}`, 14, y);
+    doc.setTextColor(text.r, text.g, text.b);
+    doc.text(`${this.studyHoursLabel()}:`, 16, y);
+    doc.setTextColor(muted.r, muted.g, muted.b);
+    doc.text(String(values.studyHours), 70, y);
     y += 6;
-    doc.text(`${this.studyHoursLabel()}: ${values.studyHours}`, 14, y);
+    doc.setTextColor(text.r, text.g, text.b);
+    doc.text(`${this.workHoursLabel()}:`, 16, y);
+    doc.setTextColor(muted.r, muted.g, muted.b);
+    doc.text(String(values.workHours), 70, y);
     y += 6;
-    doc.text(`${this.workHoursLabel()}: ${values.workHours}`, 14, y);
+    doc.setTextColor(text.r, text.g, text.b);
+    doc.text(`${this.gamingHoursLabel()}:`, 16, y);
+    doc.setTextColor(muted.r, muted.g, muted.b);
+    doc.text(String(values.gamingHours), 70, y);
     y += 6;
-    doc.text(`${this.gamingHoursLabel()}: ${values.gamingHours}`, 14, y);
-    y += 6;
-    doc.text(`${this.socialHoursLabel()}: ${values.socialHours}`, 14, y);
+    doc.setTextColor(text.r, text.g, text.b);
+    doc.text(`${this.socialHoursLabel()}:`, 16, y);
+    doc.setTextColor(muted.r, muted.g, muted.b);
+    doc.text(String(values.socialHours), 70, y);
     y += 8;
+    doc.setTextColor(text.r, text.g, text.b);
 
-    doc.text(this.pdfResultTitle(), 14, y);
+    y = addSectionTitle(this.pdfResultTitle(), y);
+    doc.setFontSize(12);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(primary.r, primary.g, primary.b);
+    doc.text(`${this.productivePercent}% ${this.productiveLabel()}`, 16, y);
     y += 6;
-    doc.text(`${this.productivePercent}% ${this.productiveLabel()}`, 14, y);
-    y += 6;
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(text.r, text.g, text.b);
     doc.text(
       `${this.productiveHoursLabel()}: ${this.productiveHours} / ${this.totalHours} ${this.hoursLabel()}`,
-      14,
+      16,
       y
     );
     y += 8;
 
-    doc.text(this.pdfRecommendationTitle(), 14, y);
-    y += 6;
-    const messageLines = doc.splitTextToSize(this.message, 180);
-    doc.text(messageLines, 14, y);
+    y = addSectionTitle(this.pdfRecommendationTitle(), y);
+    const messageLines = doc.splitTextToSize(this.message, pageWidth - 32);
+    doc.setTextColor(muted.r, muted.g, muted.b);
+    doc.text(messageLines, 16, y);
+    doc.setTextColor(text.r, text.g, text.b);
 
     doc.save('time-evaluator.pdf');
   }
