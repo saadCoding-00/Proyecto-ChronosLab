@@ -1,29 +1,23 @@
 <section id="servicios" class="section">
   <header>
-    <p class="eyebrow">Servicios</p>
-    <h2>Servicios de investigación y diagnóstico sobre el uso del tiempo digital.</h2>
+    <p class="eyebrow">{{ servicesEyebrow() }}</p>
+    <h2>{{ servicesHeading() }}</h2>
   </header>
   <div class="card-grid">
     <article class="card">
-      <h3>Análisis de productividad académica</h3>
-      <p>
-        Medimos hábitos de estudio, niveles de atención y resultados académicos
-        mediante métricas comparables y trazables.
-      </p>
+      <h3>{{ card1Title() }}</h3>
+      <p>{{ card1Body() }}</p>
     </article>
     <article class="card">
-      <h3>Estudios de ocio digital</h3>
-      <p>
-        Analizamos patrones de consumo en redes sociales y videojuegos para
-        evaluar su impacto en bienestar y hábitos cotidianos.
-      </p>
+      <h3>{{ card2Title() }}</h3>
+      <p>{{ card2Body() }}</p>
     </article>
     <article class="card">
-      <h3>Optimización del teletrabajo</h3>
-      <p>
-        Identificamos fricciones y oportunidades en equipos remotos para mejorar
-        eficiencia, equilibrio y coordinación interfuncional.
-      </p>
+      <h3>{{ card3Title() }}</h3>
+      <p>{{ card3Body() }}</p>
     </article>
   </div>
+  <button type="button" class="primary-button" (click)="onButtonClick()">
+    {{ buttonLabel() }}
+  </button>
 </section>

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -7,6 +7,24 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent {
+  eyebrow = input<string>('');
+  heading = input<string>('');
+
+  nameLabel = input<string>('');
+  namePlaceholder = input<string>('');
+  nameError = input<string>('');
+
+  emailLabel = input<string>('');
+  emailPlaceholder = input<string>('');
+  emailError = input<string>('');
+
+  messageLabel = input<string>('');
+  messagePlaceholder = input<string>('');
+  messageError = input<string>('');
+
+  submitLabel = input<string>('');
+  successMessage = input<string>('');
+
   private formBuilder = inject(FormBuilder);
   submitted = false;
 

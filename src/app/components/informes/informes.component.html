@@ -1,23 +1,23 @@
 <section id="informes" class="section">
   <header>
-    <p class="eyebrow">Informes</p>
-    <h2>Visibilidad completa para decisiones en tiempo real.</h2>
+    <p class="eyebrow">{{ eyebrow() }}</p>
+    <h2>{{ heading() }}</h2>
   </header>
   <div class="report-grid">
     <div class="report">
-      <h3>Reporte trimestral</h3>
-      <p>Indicadores financieros y operativos en un solo tablero.</p>
-      <span>Actualizado cada 24h</span>
+      <h3>{{ report1Title() }}</h3>
+      <p>{{ report1Body() }}</p>
+      <span>{{ report1Meta() }}</span>
     </div>
     <div class="report">
-      <h3>Radar de riesgos</h3>
-      <p>Alertas proactivas para continuidad y cumplimiento normativo.</p>
-      <span>Prioridad alta</span>
+      <h3>{{ report2Title() }}</h3>
+      <p>{{ report2Body() }}</p>
+      <span>{{ report2Meta() }}</span>
     </div>
     <div class="report">
-      <h3>Mapa de crecimiento</h3>
-      <p>Oportunidades por segmento y proyecciones de ingresos.</p>
-      <span>IA aplicada</span>
+      <h3>{{ report3Title() }}</h3>
+      <p>{{ report3Body() }}</p>
+      <span>{{ report3Meta() }}</span>
     </div>
   </div>
 </section>

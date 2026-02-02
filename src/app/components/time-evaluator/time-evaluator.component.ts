@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { jsPDF } from 'jspdf';
 
 type Profile = 'estudiante' | 'teletrabajador' | 'gamer';
 
@@ -9,17 +10,63 @@ type Profile = 'estudiante' | 'teletrabajador' | 'gamer';
   styleUrls: ['./time-evaluator.component.css']
 })
 export class TimeEvaluatorComponent {
-  readonly profileLabels: Record<Profile, string> = {
-    estudiante: 'Estudiante',
-    teletrabajador: 'Teletrabajador',
-    gamer: 'Gamer'
-  };
+  sectionKicker = input<string>('');
+  heading = input<string>('');
+  description = input<string>('');
+
+  profileLabel = input<string>('');
+  nameLabel = input<string>('');
+  lastNameLabel = input<string>('');
+  ageLabel = input<string>('');
+  notesLabel = input<string>('');
+
+  namePlaceholder = input<string>('');
+  lastNamePlaceholder = input<string>('');
+  agePlaceholder = input<string>('');
+  notesPlaceholder = input<string>('');
+
+  studyHoursLabel = input<string>('');
+  workHoursLabel = input<string>('');
+  gamingHoursLabel = input<string>('');
+  socialHoursLabel = input<string>('');
+
+  optionEstudianteLabel = input<string>('');
+  optionTeletrabajadorLabel = input<string>('');
+  optionGamerLabel = input<string>('');
+
+  resultTitle = input<string>('');
+  productiveLabel = input<string>('');
+  productiveHoursLabel = input<string>('');
+  hoursLabel = input<string>('');
+  recommendationTitle = input<string>('');
+
+  pdfButtonLabel = input<string>('');
+  pdfTitle = input<string>('');
+  pdfUserDataTitle = input<string>('');
+  pdfTimeDataTitle = input<string>('');
+  pdfResultTitle = input<string>('');
+  pdfRecommendationTitle = input<string>('');
+  pdfNotesLabel = input<string>('');
+
+  messageEstudianteAlto = input<string>('');
+  messageEstudianteMedio = input<string>('');
+  messageEstudianteBajo = input<string>('');
+  messageTeletrabajadorAlto = input<string>('');
+  messageTeletrabajadorMedio = input<string>('');
+  messageTeletrabajadorBajo = input<string>('');
+  messageGamerAlto = input<string>('');
+  messageGamerMedio = input<string>('');
+  messageGamerBajo = input<string>('');
 
   readonly form;
 
   constructor(private readonly fb: FormBuilder) {
     this.form = this.fb.group(
       {
+        name: ['', [Validators.required, Validators.minLength(2)]],
+        lastName: ['', [Validators.required, Validators.minLength(2)]],
+        age: [0, [Validators.min(0), Validators.max(120)]],
+        notes: [''],
         profile: ['estudiante' as Profile, Validators.required],
         studyHours: [0, [Validators.min(0), Validators.max(24)]],
         workHours: [0, [Validators.min(0), Validators.max(24)]],
@@ -62,43 +109,97 @@ export class TimeEvaluatorComponent {
   get message(): string {
     const profile = this.form.controls['profile'].value;
     const percent = this.productivePercent;
+    const level: 'alto' | 'medio' | 'bajo' = percent >= 70 ? 'alto' : percent >= 40 ? 'medio' : 'bajo';
 
-    if (percent >= 70) {
-      return this.getProfileMessage(profile, 'alto');
+    if (profile === 'estudiante') {
+      return level === 'alto'
+        ? this.messageEstudianteAlto()
+        : level === 'medio'
+          ? this.messageEstudianteMedio()
+          : this.messageEstudianteBajo();
     }
-    if (percent >= 40) {
-      return this.getProfileMessage(profile, 'medio');
+
+    if (profile === 'teletrabajador') {
+      return level === 'alto'
+        ? this.messageTeletrabajadorAlto()
+        : level === 'medio'
+          ? this.messageTeletrabajadorMedio()
+          : this.messageTeletrabajadorBajo();
     }
-    return this.getProfileMessage(profile, 'bajo');
+
+    return level === 'alto'
+      ? this.messageGamerAlto()
+      : level === 'medio'
+        ? this.messageGamerMedio()
+        : this.messageGamerBajo();
   }
 
-  private getProfileMessage(profile: Profile, level: 'alto' | 'medio' | 'bajo'): string {
-    const profileName = this.profileLabels[profile];
-    const base = {
-      alto: `${profileName}: Excelente balance. Mantén tus hábitos y reserva pausas breves para recargar energía.`,
-      medio: `${profileName}: Buen punto de partida. Ajusta pequeños bloques de distracción para subir tu productividad.`,
-      bajo: `${profileName}: Atención. Tu tiempo productivo es bajo; prioriza tareas clave y limita las interrupciones.`
-    };
+  private getProfileLabel(profile: Profile): string {
+    if (profile === 'estudiante') {
+      return this.optionEstudianteLabel();
+    }
+    if (profile === 'teletrabajador') {
+      return this.optionTeletrabajadorLabel();
+    }
+    return this.optionGamerLabel();
+  }
 
-    const tips = {
-      estudiante: {
-        alto: 'Consolida sesiones de estudio de 50-60 minutos y protege horarios de descanso.',
-        medio: 'Prueba una rutina Pomodoro y evita multitarea en redes sociales.',
-        bajo: 'Define metas diarias y reduce videojuegos/redes en horarios académicos.'
-      },
-      teletrabajador: {
-        alto: 'Mantén bloques de enfoque profundo y calendariza reuniones en ventanas cortas.',
-        medio: 'Agrupa tareas similares y limita notificaciones durante las horas pico.',
-        bajo: 'Crea un horario fijo y separa el tiempo personal del laboral.'
-      },
-      gamer: {
-        alto: 'Sigue equilibrando ocio y productividad; planifica descansos activos.',
-        medio: 'Establece límites por sesión y asigna primero tus tareas prioritarias.',
-        bajo: 'Define un tope diario de juego y reemplaza una sesión por estudio o trabajo.'
-      }
-    };
+  generatePdf(): void {
+    const values = this.form.getRawValue();
+    const doc = new jsPDF();
 
-    const suggestion = tips[profile]?.[level] ?? 'Ajusta tu rutina con objetivos concretos y revisa tus avances cada semana.';
-    return `${base[level]} ${suggestion}`;
+    let y = 16;
+    doc.setFontSize(16);
+    doc.text(this.pdfTitle(), 14, y);
+    y += 10;
+
+    doc.setFontSize(12);
+    doc.text(this.pdfUserDataTitle(), 14, y);
+    y += 6;
+    doc.text(`${this.nameLabel()}: ${values.name}`, 14, y);
+    y += 6;
+    doc.text(`${this.lastNameLabel()}: ${values.lastName}`, 14, y);
+    y += 6;
+    doc.text(`${this.ageLabel()}: ${values.age}`, 14, y);
+    y += 8;
+    const notes = values.notes?.trim();
+    if (notes) {
+      doc.text(`${this.pdfNotesLabel()}:`, 14, y);
+      y += 6;
+      const notesLines = doc.splitTextToSize(notes, 180);
+      doc.text(notesLines, 14, y);
+      y += notesLines.length * 6 + 4;
+    }
+
+    doc.text(this.pdfTimeDataTitle(), 14, y);
+    y += 6;
+    doc.text(`${this.profileLabel()}: ${this.getProfileLabel(values.profile)}`, 14, y);
+    y += 6;
+    doc.text(`${this.studyHoursLabel()}: ${values.studyHours}`, 14, y);
+    y += 6;
+    doc.text(`${this.workHoursLabel()}: ${values.workHours}`, 14, y);
+    y += 6;
+    doc.text(`${this.gamingHoursLabel()}: ${values.gamingHours}`, 14, y);
+    y += 6;
+    doc.text(`${this.socialHoursLabel()}: ${values.socialHours}`, 14, y);
+    y += 8;
+
+    doc.text(this.pdfResultTitle(), 14, y);
+    y += 6;
+    doc.text(`${this.productivePercent}% ${this.productiveLabel()}`, 14, y);
+    y += 6;
+    doc.text(
+      `${this.productiveHoursLabel()}: ${this.productiveHours} / ${this.totalHours} ${this.hoursLabel()}`,
+      14,
+      y
+    );
+    y += 8;
+
+    doc.text(this.pdfRecommendationTitle(), 14, y);
+    y += 6;
+    const messageLines = doc.splitTextToSize(this.message, 180);
+    doc.text(messageLines, 14, y);
+
+    doc.save('time-evaluator.pdf');
   }
 }

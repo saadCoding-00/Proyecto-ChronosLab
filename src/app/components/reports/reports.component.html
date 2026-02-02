@@ -1,7 +1,7 @@
 <section id="informes" class="section reports">
   <header>
-    <p class="eyebrow">Informes</p>
-    <h2>Consulta informes técnicos disponibles para descarga o lectura en línea.</h2>
+    <p class="eyebrow">{{ eyebrow() }}</p>
+    <h2>{{ heading() }}</h2>
   </header>
 
   <div class="report-list">
@@ -12,10 +12,10 @@
       </div>
       <div class="report-actions">
         <a class="ghost" [href]="getReportUrl(report.fileName)" target="_blank" rel="noopener">
-          Abrir PDF
+          {{ openPdfLabel() }}
         </a>
         <a class="primary" [href]="getReportUrl(report.fileName)" [download]="report.fileName">
-          Descargar
+          {{ downloadLabel() }}
         </a>
       </div>
     </article>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 import { ReportItem, ReportService } from '../../services/report.service';
 
@@ -8,6 +8,11 @@ import { ReportItem, ReportService } from '../../services/report.service';
   styleUrls: ['./reports.component.css']
 })
 export class ReportsComponent {
+  eyebrow = input<string>('');
+  heading = input<string>('');
+  openPdfLabel = input<string>('');
+  downloadLabel = input<string>('');
+
   reports: ReportItem[];
 
   constructor(private reportService: ReportService) {

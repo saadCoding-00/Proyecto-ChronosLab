@@ -1,22 +1,19 @@
 <section id="inicio" class="section hero">
   <div class="hero-text">
-    <p class="eyebrow">Consultoría & analítica avanzada</p>
-    <h1>Impulsamos la estrategia de tu empresa con datos confiables.</h1>
-    <p>
-      En ChronosLab conectamos tecnología, ciencia y negocio para construir
-      soluciones que aceleran la toma de decisiones.
-    </p>
+    <p class="eyebrow">{{ eyebrow() }}</p>
+    <h1>{{ heading() }}</h1>
+    <p>{{ description() }}</p>
     <div class="hero-actions">
-      <button class="primary">Agenda una demo</button>
-      <button class="ghost">Ver casos</button>
+      <button class="primary">{{ primaryCtaLabel() }}</button>
+      <button class="ghost">{{ secondaryCtaLabel() }}</button>
     </div>
   </div>
   <div class="hero-card">
-    <h3>Resumen ejecutivo</h3>
+    <h3>{{ summaryTitle() }}</h3>
     <ul>
-      <li>+120 proyectos corporativos entregados</li>
-      <li>Tiempo de respuesta medio: 48h</li>
-      <li>Operaciones en 6 países</li>
+      <li>{{ summaryItem1() }}</li>
+      <li>{{ summaryItem2() }}</li>
+      <li>{{ summaryItem3() }}</li>
     </ul>
   </div>
 </section>

@@ -1,60 +1,55 @@
 <section id="inicio" class="section home">
   <header>
-    <p class="eyebrow">ChronosLab</p>
-    <h1>Investigamos la distribución del tiempo en entornos digitales contemporáneos.</h1>
-    <p>
-      ChronosLab desarrolla estudios cuantitativos y cualitativos sobre el uso del tiempo
-      en estudiantes, teletrabajo, redes sociales y videojuegos. Transformamos datos
-      conductuales en evidencia útil para diseñar políticas, programas formativos y
-      estrategias organizacionales basadas en resultados verificables.
-    </p>
+    <p class="eyebrow">{{ eyebrow() }}</p>
+    <h1>{{ heading() }}</h1>
+    <p>{{ description() }}</p>
   </header>
   <div class="focus-grid">
     <article>
-      <h3>Estudiantes</h3>
-      <p>Trayectorias de estudio, concentración sostenida y balance entre tareas y ocio.</p>
+      <h3>{{ focus1Title() }}</h3>
+      <p>{{ focus1Body() }}</p>
     </article>
     <article>
-      <h3>Teletrabajo</h3>
-      <p>Dinámicas de trabajo remoto, pausas cognitivas y eficiencia operacional.</p>
+      <h3>{{ focus2Title() }}</h3>
+      <p>{{ focus2Body() }}</p>
     </article>
     <article>
-      <h3>Redes sociales</h3>
-      <p>Patrones de exposición, autorregulación y bienestar digital.</p>
+      <h3>{{ focus3Title() }}</h3>
+      <p>{{ focus3Body() }}</p>
     </article>
     <article>
-      <h3>Videojuegos</h3>
-      <p>Engagement, micro-momentos y diseño de experiencias lúdicas sostenibles.</p>
+      <h3>{{ focus4Title() }}</h3>
+      <p>{{ focus4Body() }}</p>
     </article>
   </div>
 
   <div class="insight-grid">
     <article class="insight-card">
-      <img src="assets/images/student-analysis.svg" alt="Análisis de hábitos de estudio" />
+      <img [src]="insight1ImageSrc()" [alt]="insight1ImageAlt()" />
       <div>
-        <h3>Analítica de estudio</h3>
-        <p>Visualizamos avances, foco y ritmo académico con métricas claras.</p>
+        <h3>{{ insight1Title() }}</h3>
+        <p>{{ insight1Body() }}</p>
       </div>
     </article>
     <article class="insight-card">
-      <img src="assets/images/remote-work.svg" alt="Panel de teletrabajo productivo" />
+      <img [src]="insight2ImageSrc()" [alt]="insight2ImageAlt()" />
       <div>
-        <h3>Teletrabajo eficiente</h3>
-        <p>Medimos productividad remota y ciclos de descanso saludable.</p>
+        <h3>{{ insight2Title() }}</h3>
+        <p>{{ insight2Body() }}</p>
       </div>
     </article>
     <article class="insight-card">
-      <img src="assets/images/social-analytics.svg" alt="Indicadores de redes sociales" />
+      <img [src]="insight3ImageSrc()" [alt]="insight3ImageAlt()" />
       <div>
-        <h3>Redes con propósito</h3>
-        <p>Detectamos patrones de uso y bienestar digital en tiempo real.</p>
+        <h3>{{ insight3Title() }}</h3>
+        <p>{{ insight3Body() }}</p>
       </div>
     </article>
     <article class="insight-card">
-      <img src="assets/images/gaming-insights.svg" alt="Insights de videojuegos" />
+      <img [src]="insight4ImageSrc()" [alt]="insight4ImageAlt()" />
       <div>
-        <h3>Gaming responsable</h3>
-        <p>Equilibramos diversión, recuperación y objetivos personales.</p>
+        <h3>{{ insight4Title() }}</h3>
+        <p>{{ insight4Body() }}</p>
       </div>
     </article>
   </div>

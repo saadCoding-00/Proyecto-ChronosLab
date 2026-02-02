@@ -1,37 +1,37 @@
 <section id="contacto" class="section contact">
   <header>
-    <p class="eyebrow">Contacto</p>
-    <h2>Conversemos sobre tu necesidad de análisis o investigación.</h2>
+    <p class="eyebrow">{{ eyebrow() }}</p>
+    <h2>{{ heading() }}</h2>
   </header>
 
   <form [formGroup]="form" (ngSubmit)="submit()">
     <label>
-      Nombre
-      <input type="text" formControlName="name" placeholder="Nombre completo" />
+      {{ nameLabel() }}
+      <input type="text" formControlName="name" [placeholder]="namePlaceholder()" />
       <span class="error" *ngIf="form.get('name')?.touched && form.get('name')?.invalid">
-        Indica tu nombre (mínimo 2 caracteres).
+        {{ nameError() }}
       </span>
     </label>
 
     <label>
-      Email
-      <input type="email" formControlName="email" placeholder="nombre@institucion.edu" />
+      {{ emailLabel() }}
+      <input type="email" formControlName="email" [placeholder]="emailPlaceholder()" />
       <span class="error" *ngIf="form.get('email')?.touched && form.get('email')?.invalid">
-        Indica un email válido.
+        {{ emailError() }}
       </span>
     </label>
 
     <label>
-      Mensaje
-      <textarea rows="4" formControlName="message" placeholder="Describe el objetivo del estudio"></textarea>
+      {{ messageLabel() }}
+      <textarea rows="4" formControlName="message" [placeholder]="messagePlaceholder()"></textarea>
       <span class="error" *ngIf="form.get('message')?.touched && form.get('message')?.invalid">
-        Describe con más detalle (mínimo 10 caracteres).
+        {{ messageError() }}
       </span>
     </label>
 
-    <button type="submit" class="primary">Enviar</button>
+    <button type="submit" class="primary">{{ submitLabel() }}</button>
     <p class="success" *ngIf="submitted">
-      Gracias. Tu mensaje se ha enviado correctamente.
+      {{ successMessage() }}
     </p>
   </form>
 </section>
