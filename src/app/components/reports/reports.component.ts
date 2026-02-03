@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-
+import { ReportsData } from '../../models';
 import { ReportItem, ReportService } from '../../services/report.service';
 
 @Component({
@@ -8,10 +8,7 @@ import { ReportItem, ReportService } from '../../services/report.service';
   styleUrls: ['./reports.component.css']
 })
 export class ReportsComponent {
-  eyebrow = input<string>('');
-  heading = input<string>('');
-  openPdfLabel = input<string>('');
-  downloadLabel = input<string>('');
+  data = input.required<ReportsData>();
 
   reports: ReportItem[];
 

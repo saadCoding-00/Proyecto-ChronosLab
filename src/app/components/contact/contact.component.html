@@ -1,37 +1,37 @@
 <section id="contacto" class="section contact">
   <header>
-    <p class="eyebrow">{{ eyebrow() }}</p>
-    <h2>{{ heading() }}</h2>
+    <p class="eyebrow">{{ data().eyebrow }}</p>
+    <h2>{{ data().heading }}</h2>
   </header>
 
   <form [formGroup]="form" (ngSubmit)="submit()">
     <label>
-      {{ nameLabel() }}
-      <input type="text" formControlName="name" [placeholder]="namePlaceholder()" />
+      {{ data().labels.name }}
+      <input type="text" formControlName="name" [placeholder]="data().placeholders.name" />
       <span class="error" *ngIf="form.get('name')?.touched && form.get('name')?.invalid">
-        {{ nameError() }}
+        {{ data().errors.name }}
       </span>
     </label>
 
     <label>
-      {{ emailLabel() }}
-      <input type="email" formControlName="email" [placeholder]="emailPlaceholder()" />
+      {{ data().labels.email }}
+      <input type="email" formControlName="email" [placeholder]="data().placeholders.email" />
       <span class="error" *ngIf="form.get('email')?.touched && form.get('email')?.invalid">
-        {{ emailError() }}
+        {{ data().errors.email }}
       </span>
     </label>
 
     <label>
-      {{ messageLabel() }}
-      <textarea rows="4" formControlName="message" [placeholder]="messagePlaceholder()"></textarea>
+      {{ data().labels.message }}
+      <textarea rows="4" formControlName="message" [placeholder]="data().placeholders.message"></textarea>
       <span class="error" *ngIf="form.get('message')?.touched && form.get('message')?.invalid">
-        {{ messageError() }}
+        {{ data().errors.message }}
       </span>
     </label>
 
-    <button type="submit" class="primary">{{ submitLabel() }}</button>
+    <button type="submit" class="primary">{{ data().labels.submit }}</button>
     <p class="success" *ngIf="submitted">
-      {{ successMessage() }}
+      {{ data().successMessage }}
     </p>
   </form>
 </section>

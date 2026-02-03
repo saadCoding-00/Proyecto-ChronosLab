@@ -1,6 +1,7 @@
 import { Component, input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { jsPDF } from 'jspdf';
+import { TimeEvaluatorData } from '../../models';
 
 type Profile = 'estudiante' | 'teletrabajador' | 'gamer';
 
@@ -10,53 +11,7 @@ type Profile = 'estudiante' | 'teletrabajador' | 'gamer';
   styleUrls: ['./time-evaluator.component.css']
 })
 export class TimeEvaluatorComponent {
-  sectionKicker = input<string>('');
-  heading = input<string>('');
-  description = input<string>('');
-
-  profileLabel = input<string>('');
-  nameLabel = input<string>('');
-  lastNameLabel = input<string>('');
-  ageLabel = input<string>('');
-  notesLabel = input<string>('');
-
-  namePlaceholder = input<string>('');
-  lastNamePlaceholder = input<string>('');
-  agePlaceholder = input<string>('');
-  notesPlaceholder = input<string>('');
-
-  studyHoursLabel = input<string>('');
-  workHoursLabel = input<string>('');
-  gamingHoursLabel = input<string>('');
-  socialHoursLabel = input<string>('');
-
-  optionEstudianteLabel = input<string>('');
-  optionTeletrabajadorLabel = input<string>('');
-  optionGamerLabel = input<string>('');
-
-  resultTitle = input<string>('');
-  productiveLabel = input<string>('');
-  productiveHoursLabel = input<string>('');
-  hoursLabel = input<string>('');
-  recommendationTitle = input<string>('');
-
-  pdfButtonLabel = input<string>('');
-  pdfTitle = input<string>('');
-  pdfUserDataTitle = input<string>('');
-  pdfTimeDataTitle = input<string>('');
-  pdfResultTitle = input<string>('');
-  pdfRecommendationTitle = input<string>('');
-  pdfNotesLabel = input<string>('');
-
-  messageEstudianteAlto = input<string>('');
-  messageEstudianteMedio = input<string>('');
-  messageEstudianteBajo = input<string>('');
-  messageTeletrabajadorAlto = input<string>('');
-  messageTeletrabajadorMedio = input<string>('');
-  messageTeletrabajadorBajo = input<string>('');
-  messageGamerAlto = input<string>('');
-  messageGamerMedio = input<string>('');
-  messageGamerBajo = input<string>('');
+  data = input.required<TimeEvaluatorData>();
 
   readonly form;
 
@@ -110,42 +65,45 @@ export class TimeEvaluatorComponent {
     const profile = this.form.controls['profile'].value;
     const percent = this.productivePercent;
     const level: 'alto' | 'medio' | 'bajo' = percent >= 70 ? 'alto' : percent >= 40 ? 'medio' : 'bajo';
+    const messages = this.data().messages;
 
     if (profile === 'estudiante') {
       return level === 'alto'
-        ? this.messageEstudianteAlto()
+        ? messages.estudianteAlto
         : level === 'medio'
-          ? this.messageEstudianteMedio()
-          : this.messageEstudianteBajo();
+          ? messages.estudianteMedio
+          : messages.estudianteBajo;
     }
 
     if (profile === 'teletrabajador') {
       return level === 'alto'
-        ? this.messageTeletrabajadorAlto()
+        ? messages.teletrabajadorAlto
         : level === 'medio'
-          ? this.messageTeletrabajadorMedio()
-          : this.messageTeletrabajadorBajo();
+          ? messages.teletrabajadorMedio
+          : messages.teletrabajadorBajo;
     }
 
     return level === 'alto'
-      ? this.messageGamerAlto()
+      ? messages.gamerAlto
       : level === 'medio'
-        ? this.messageGamerMedio()
-        : this.messageGamerBajo();
+        ? messages.gamerMedio
+        : messages.gamerBajo;
   }
 
   private getProfileLabel(profile: Profile): string {
+    const options = this.data().options;
     if (profile === 'estudiante') {
-      return this.optionEstudianteLabel();
+      return options.estudiante;
     }
     if (profile === 'teletrabajador') {
-      return this.optionTeletrabajadorLabel();
+      return options.teletrabajador;
     }
-    return this.optionGamerLabel();
+    return options.gamer;
   }
 
   generatePdf(): void {
     const values = this.form.getRawValue();
+    const d = this.data();
     const doc = new jsPDF();
     const pageWidth = doc.internal.pageSize.getWidth();
 
@@ -171,32 +129,32 @@ export class TimeEvaluatorComponent {
     doc.setTextColor(255, 255, 255);
     doc.setFontSize(16);
     doc.setFont('helvetica', 'bold');
-    doc.text(this.pdfTitle(), 14, 14);
+    doc.text(d.pdf.title, 14, 14);
 
     doc.setTextColor(text.r, text.g, text.b);
     doc.setFont('helvetica', 'normal');
     y = 32;
 
-    y = addSectionTitle(this.pdfUserDataTitle(), y);
+    y = addSectionTitle(d.pdf.userDataTitle, y);
     doc.setFontSize(11);
-    doc.text(`${this.nameLabel()}:`, 16, y);
+    doc.text(`${d.labels.name}:`, 16, y);
     doc.setTextColor(muted.r, muted.g, muted.b);
     doc.text(String(values.name), 70, y);
     y += 6;
     doc.setTextColor(text.r, text.g, text.b);
-    doc.text(`${this.lastNameLabel()}:`, 16, y);
+    doc.text(`${d.labels.lastName}:`, 16, y);
     doc.setTextColor(muted.r, muted.g, muted.b);
     doc.text(String(values.lastName), 70, y);
     y += 6;
     doc.setTextColor(text.r, text.g, text.b);
-    doc.text(`${this.ageLabel()}:`, 16, y);
+    doc.text(`${d.labels.age}:`, 16, y);
     doc.setTextColor(muted.r, muted.g, muted.b);
     doc.text(String(values.age), 70, y);
     y += 8;
     doc.setTextColor(text.r, text.g, text.b);
     const notes = values.notes?.trim();
     if (notes) {
-      doc.text(`${this.pdfNotesLabel()}:`, 16, y);
+      doc.text(`${d.pdf.notesLabel}:`, 16, y);
       y += 6;
       doc.setTextColor(muted.r, muted.g, muted.b);
       const notesLines = doc.splitTextToSize(notes, pageWidth - 32);
@@ -205,50 +163,50 @@ export class TimeEvaluatorComponent {
       y += notesLines.length * 6 + 4;
     }
 
-    y = addSectionTitle(this.pdfTimeDataTitle(), y);
+    y = addSectionTitle(d.pdf.timeDataTitle, y);
     doc.setFontSize(11);
-    doc.text(`${this.profileLabel()}:`, 16, y);
+    doc.text(`${d.labels.profile}:`, 16, y);
     doc.setTextColor(muted.r, muted.g, muted.b);
     doc.text(this.getProfileLabel(values.profile), 70, y);
     y += 6;
     doc.setTextColor(text.r, text.g, text.b);
-    doc.text(`${this.studyHoursLabel()}:`, 16, y);
+    doc.text(`${d.labels.studyHours}:`, 16, y);
     doc.setTextColor(muted.r, muted.g, muted.b);
     doc.text(String(values.studyHours), 70, y);
     y += 6;
     doc.setTextColor(text.r, text.g, text.b);
-    doc.text(`${this.workHoursLabel()}:`, 16, y);
+    doc.text(`${d.labels.workHours}:`, 16, y);
     doc.setTextColor(muted.r, muted.g, muted.b);
     doc.text(String(values.workHours), 70, y);
     y += 6;
     doc.setTextColor(text.r, text.g, text.b);
-    doc.text(`${this.gamingHoursLabel()}:`, 16, y);
+    doc.text(`${d.labels.gamingHours}:`, 16, y);
     doc.setTextColor(muted.r, muted.g, muted.b);
     doc.text(String(values.gamingHours), 70, y);
     y += 6;
     doc.setTextColor(text.r, text.g, text.b);
-    doc.text(`${this.socialHoursLabel()}:`, 16, y);
+    doc.text(`${d.labels.socialHours}:`, 16, y);
     doc.setTextColor(muted.r, muted.g, muted.b);
     doc.text(String(values.socialHours), 70, y);
     y += 8;
     doc.setTextColor(text.r, text.g, text.b);
 
-    y = addSectionTitle(this.pdfResultTitle(), y);
+    y = addSectionTitle(d.pdf.resultTitle, y);
     doc.setFontSize(12);
     doc.setFont('helvetica', 'bold');
     doc.setTextColor(primary.r, primary.g, primary.b);
-    doc.text(`${this.productivePercent}% ${this.productiveLabel()}`, 16, y);
+    doc.text(`${this.productivePercent}% ${d.labels.productive}`, 16, y);
     y += 6;
     doc.setFont('helvetica', 'normal');
     doc.setTextColor(text.r, text.g, text.b);
     doc.text(
-      `${this.productiveHoursLabel()}: ${this.productiveHours} / ${this.totalHours} ${this.hoursLabel()}`,
+      `${d.labels.productiveHours}: ${this.productiveHours} / ${this.totalHours} ${d.labels.hours}`,
       16,
       y
     );
     y += 8;
 
-    y = addSectionTitle(this.pdfRecommendationTitle(), y);
+    y = addSectionTitle(d.pdf.recommendationTitle, y);
     const messageLines = doc.splitTextToSize(this.message, pageWidth - 32);
     doc.setTextColor(muted.r, muted.g, muted.b);
     doc.text(messageLines, 16, y);

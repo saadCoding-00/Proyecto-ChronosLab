@@ -7,115 +7,16 @@
     </div>
   </div>
   <nav class="site-nav">
-    <button type="button" class="nav-link" (click)="scrollTo('inicio')">Inicio</button>
-    <button type="button" class="nav-link" (click)="scrollTo('servicios')">Servicios</button>
-    <button type="button" class="nav-link" (click)="scrollTo('informes')">Informes</button>
-    <button type="button" class="nav-link" (click)="scrollTo('evaluador')">Evaluador</button>
-    <button type="button" class="nav-link" (click)="scrollTo('contacto')">Contacto</button>
+    <a class="nav-link" routerLink="/inicio" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
+    <a class="nav-link" routerLink="/servicios" routerLinkActive="is-active">Servicios</a>
+    <a class="nav-link" routerLink="/informes" routerLinkActive="is-active">Informes</a>
+    <a class="nav-link" routerLink="/evaluador" routerLinkActive="is-active">Evaluador</a>
+    <a class="nav-link" routerLink="/contacto" routerLinkActive="is-active">Contacto</a>
   </nav>
 </header>
 
 <main>
-  <app-home
-    [eyebrow]="'ChronosLab'"
-    [heading]="'Investigamos la distribución del tiempo en entornos digitales contemporáneos.'"
-    [description]="'ChronosLab desarrolla estudios cuantitativos y cualitativos sobre el uso del tiempo en estudiantes, teletrabajo, redes sociales y videojuegos. Transformamos datos conductuales en evidencia útil para diseñar políticas, programas formativos y estrategias organizacionales basadas en resultados verificables.'"
-    [focus1Title]="'Estudiantes'"
-    [focus1Body]="'Trayectorias de estudio, concentración sostenida y balance entre tareas y ocio.'"
-    [focus2Title]="'Teletrabajo'"
-    [focus2Body]="'Dinámicas de trabajo remoto, pausas cognitivas y eficiencia operacional.'"
-    [focus3Title]="'Redes sociales'"
-    [focus3Body]="'Patrones de exposición, autorregulación y bienestar digital.'"
-    [focus4Title]="'Videojuegos'"
-    [focus4Body]="'Engagement, micro-momentos y diseño de experiencias lúdicas sostenibles.'"
-    [insight1ImageSrc]="'assets/images/student-analysis.svg'"
-    [insight1ImageAlt]="'Análisis de hábitos de estudio'"
-    [insight1Title]="'Analítica de estudio'"
-    [insight1Body]="'Visualizamos avances, foco y ritmo académico con métricas claras.'"
-    [insight2ImageSrc]="'assets/images/remote-work.svg'"
-    [insight2ImageAlt]="'Panel de teletrabajo productivo'"
-    [insight2Title]="'Teletrabajo eficiente'"
-    [insight2Body]="'Medimos productividad remota y ciclos de descanso saludable.'"
-    [insight3ImageSrc]="'assets/images/social-analytics.svg'"
-    [insight3ImageAlt]="'Indicadores de redes sociales'"
-    [insight3Title]="'Redes con propósito'"
-    [insight3Body]="'Detectamos patrones de uso y bienestar digital en tiempo real.'"
-    [insight4ImageSrc]="'assets/images/gaming-insights.svg'"
-    [insight4ImageAlt]="'Insights de videojuegos'"
-    [insight4Title]="'Gaming responsable'"
-    [insight4Body]="'Equilibramos diversión, recuperación y objetivos personales.'"
-  ></app-home>
-  <app-services [servicesHeading]="'Servicios'"
-    [servicesEyebrow]="'Servicios de investigación y diagnóstico sobre el uso del tiempo digital.'"
-    [card1Title]="'Análisis de productividad académica'" [card1Body]="'Medimos hábitos de estudio, niveles de atención y resultados académicos
-        mediante métricas comparables y trazables.'" [card2Title]="'Estudios de ocio digital'" [card2Body]="' Analizamos patrones de consumo en redes sociales y videojuegos para
-        evaluar su impacto en bienestar y hábitos cotidianos.'" [card3Title]="'Optimización del teletrabajo'"
-    [card3Body]="' Identificamos fricciones y oportunidades en equipos remotos para mejorar
-        eficiencia, equilibrio y coordinación interfuncional.'" [buttonLabel]="'Más informaciones'"
-      (buttonClick)="showModal('Transformamos los datos de uso digital en estrategias accionables para potenciar el rendimiento y el bienestar. A través de diagnósticos precisos, ayudamos a instituciones, empresas y personas a entender sus hábitos para eliminar distracciones, optimizar la carga de trabajo y recuperar el equilibrio entre la productividad académica, el ocio consciente y la eficiencia laboral.')"></app-services>
-  <app-reports
-    [eyebrow]="'Informes'"
-    [heading]="'Consulta informes técnicos disponibles para descarga o lectura en línea.'"
-    [openPdfLabel]="'Abrir PDF'"
-    [downloadLabel]="'Descargar'"
-  ></app-reports>
-  <app-time-evaluator
-    [sectionKicker]="'Diagnóstico rápido'"
-    [heading]="'TimeEvaluator'"
-    [description]="'Explora cómo distribuyes tu tiempo digital y recibe recomendaciones personalizadas.'"
-    [profileLabel]="'Perfil'"
-    [nameLabel]="'Nombre'"
-    [lastNameLabel]="'Apellido'"
-    [ageLabel]="'Edad'"
-    [notesLabel]="'Notas'"
-    [namePlaceholder]="'Ingresa tu nombre'"
-    [lastNamePlaceholder]="'Ingresa tu apellido'"
-    [agePlaceholder]="'Ingresa tu edad'"
-    [notesPlaceholder]="'Notas adicionales'"
-    [studyHoursLabel]="'Horas de estudio'"
-    [workHoursLabel]="'Horas de trabajo'"
-    [gamingHoursLabel]="'Horas de videojuegos'"
-    [socialHoursLabel]="'Horas en redes sociales'"
-    [optionEstudianteLabel]="'Estudiante'"
-    [optionTeletrabajadorLabel]="'Teletrabajador'"
-    [optionGamerLabel]="'Gamer'"
-    [resultTitle]="'Resultado'"
-    [productiveLabel]="'productivo'"
-    [productiveHoursLabel]="'Horas productivas'"
-    [hoursLabel]="'horas'"
-    [recommendationTitle]="'Recomendación'"
-    [pdfButtonLabel]="'Descargar PDF'"
-    [pdfTitle]="'Reporte TimeEvaluator'"
-    [pdfUserDataTitle]="'Datos del usuario'"
-    [pdfTimeDataTitle]="'Distribución del tiempo'"
-    [pdfResultTitle]="'Resultado'"
-    [pdfRecommendationTitle]="'Recomendación'"
-    [pdfNotesLabel]="'Notas'"
-    [messageEstudianteAlto]="'Estudiante: Excelente balance. Mantén tus hábitos y reserva pausas breves para recargar energía. Consolida sesiones de estudio de 50-60 minutos y protege horarios de descanso.'"
-    [messageEstudianteMedio]="'Estudiante: Buen punto de partida. Ajusta pequeños bloques de distracción para subir tu productividad. Prueba una rutina Pomodoro y evita multitarea en redes sociales.'"
-    [messageEstudianteBajo]="'Estudiante: Atención. Tu tiempo productivo es bajo; prioriza tareas clave y limita las interrupciones. Define metas diarias y reduce videojuegos/redes en horarios académicos.'"
-    [messageTeletrabajadorAlto]="'Teletrabajador: Excelente balance. Mantén tus hábitos y reserva pausas breves para recargar energía. Mantén bloques de enfoque profundo y calendariza reuniones en ventanas cortas.'"
-    [messageTeletrabajadorMedio]="'Teletrabajador: Buen punto de partida. Ajusta pequeños bloques de distracción para subir tu productividad. Agrupa tareas similares y limita notificaciones durante las horas pico.'"
-    [messageTeletrabajadorBajo]="'Teletrabajador: Atención. Tu tiempo productivo es bajo; prioriza tareas clave y limita las interrupciones. Crea un horario fijo y separa el tiempo personal del laboral.'"
-    [messageGamerAlto]="'Gamer: Excelente balance. Mantén tus hábitos y reserva pausas breves para recargar energía. Sigue equilibrando ocio y productividad; planifica descansos activos.'"
-    [messageGamerMedio]="'Gamer: Buen punto de partida. Ajusta pequeños bloques de distracción para subir tu productividad. Establece límites por sesión y asigna primero tus tareas prioritarias.'"
-    [messageGamerBajo]="'Gamer: Atención. Tu tiempo productivo es bajo; prioriza tareas clave y limita las interrupciones. Define un tope diario de juego y reemplaza una sesión por estudio o trabajo.'"
-  ></app-time-evaluator>
-  <app-contact
-    [eyebrow]="'Contacto'"
-    [heading]="'Conversemos sobre tu necesidad de análisis o investigación.'"
-    [nameLabel]="'Nombre'"
-    [namePlaceholder]="'Nombre completo'"
-    [nameError]="'Indica tu nombre (mínimo 2 caracteres).'"
-    [emailLabel]="'Email'"
-    [emailPlaceholder]="'nombre@institucion.edu'"
-    [emailError]="'Indica un email válido.'"
-    [messageLabel]="'Mensaje'"
-    [messagePlaceholder]="'Describe el objetivo del estudio'"
-    [messageError]="'Describe con más detalle (mínimo 10 caracteres).'"
-    [submitLabel]="'Enviar'"
-    [successMessage]="'Gracias. Tu mensaje se ha enviado correctamente.'"
-  ></app-contact>
+  <router-outlet></router-outlet>
 </main>
 
 <footer class="site-footer">

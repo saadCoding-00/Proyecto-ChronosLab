@@ -1,55 +1,55 @@
 <section id="inicio" class="section home">
   <header>
-    <p class="eyebrow">{{ eyebrow() }}</p>
-    <h1>{{ heading() }}</h1>
-    <p>{{ description() }}</p>
+    <p class="eyebrow">{{ data().eyebrow }}</p>
+    <h1>{{ data().heading }}</h1>
+    <p>{{ data().description }}</p>
   </header>
   <div class="focus-grid">
     <article>
-      <h3>{{ focus1Title() }}</h3>
-      <p>{{ focus1Body() }}</p>
+      <h3>{{ data().focus1.title }}</h3>
+      <p>{{ data().focus1.body }}</p>
     </article>
     <article>
-      <h3>{{ focus2Title() }}</h3>
-      <p>{{ focus2Body() }}</p>
+      <h3>{{ data().focus2.title }}</h3>
+      <p>{{ data().focus2.body }}</p>
     </article>
     <article>
-      <h3>{{ focus3Title() }}</h3>
-      <p>{{ focus3Body() }}</p>
+      <h3>{{ data().focus3.title }}</h3>
+      <p>{{ data().focus3.body }}</p>
     </article>
     <article>
-      <h3>{{ focus4Title() }}</h3>
-      <p>{{ focus4Body() }}</p>
+      <h3>{{ data().focus4.title }}</h3>
+      <p>{{ data().focus4.body }}</p>
     </article>
   </div>
 
   <div class="insight-grid">
     <article class="insight-card">
-      <img [src]="insight1ImageSrc()" [alt]="insight1ImageAlt()" />
+      <img [src]="data().insight1.imageSrc" [alt]="data().insight1.imageAlt" />
       <div>
-        <h3>{{ insight1Title() }}</h3>
-        <p>{{ insight1Body() }}</p>
+        <h3>{{ data().insight1.title }}</h3>
+        <p>{{ data().insight1.body }}</p>
       </div>
     </article>
     <article class="insight-card">
-      <img [src]="insight2ImageSrc()" [alt]="insight2ImageAlt()" />
+      <img [src]="data().insight2.imageSrc" [alt]="data().insight2.imageAlt" />
       <div>
-        <h3>{{ insight2Title() }}</h3>
-        <p>{{ insight2Body() }}</p>
+        <h3>{{ data().insight2.title }}</h3>
+        <p>{{ data().insight2.body }}</p>
       </div>
     </article>
     <article class="insight-card">
-      <img [src]="insight3ImageSrc()" [alt]="insight3ImageAlt()" />
+      <img [src]="data().insight3.imageSrc" [alt]="data().insight3.imageAlt" />
       <div>
-        <h3>{{ insight3Title() }}</h3>
-        <p>{{ insight3Body() }}</p>
+        <h3>{{ data().insight3.title }}</h3>
+        <p>{{ data().insight3.body }}</p>
       </div>
     </article>
     <article class="insight-card">
-      <img [src]="insight4ImageSrc()" [alt]="insight4ImageAlt()" />
+      <img [src]="data().insight4.imageSrc" [alt]="data().insight4.imageAlt" />
       <div>
-        <h3>{{ insight4Title() }}</h3>
-        <p>{{ insight4Body() }}</p>
+        <h3>{{ data().insight4.title }}</h3>
+        <p>{{ data().insight4.body }}</p>
       </div>
     </article>
   </div>

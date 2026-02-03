@@ -1,23 +1,23 @@
 <section id="servicios" class="section">
   <header>
-    <p class="eyebrow">{{ servicesEyebrow() }}</p>
-    <h2>{{ servicesHeading() }}</h2>
+    <p class="eyebrow">{{ data().eyebrow }}</p>
+    <h2>{{ data().heading }}</h2>
   </header>
   <div class="card-grid">
     <article class="card">
-      <h3>{{ card1Title() }}</h3>
-      <p>{{ card1Body() }}</p>
+      <h3>{{ data().card1.title }}</h3>
+      <p>{{ data().card1.body }}</p>
     </article>
     <article class="card">
-      <h3>{{ card2Title() }}</h3>
-      <p>{{ card2Body() }}</p>
+      <h3>{{ data().card2.title }}</h3>
+      <p>{{ data().card2.body }}</p>
     </article>
     <article class="card">
-      <h3>{{ card3Title() }}</h3>
-      <p>{{ card3Body() }}</p>
+      <h3>{{ data().card3.title }}</h3>
+      <p>{{ data().card3.body }}</p>
     </article>
   </div>
   <button type="button" class="primary-button" (click)="onButtonClick()">
-    {{ buttonLabel() }}
+    {{ data().buttonLabel }}
   </button>
 </section>

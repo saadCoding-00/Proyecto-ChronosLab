@@ -1,7 +1,7 @@
 <section id="informes" class="section reports">
   <header>
-    <p class="eyebrow">{{ eyebrow() }}</p>
-    <h2>{{ heading() }}</h2>
+    <p class="eyebrow">{{ data().eyebrow }}</p>
+    <h2>{{ data().heading }}</h2>
   </header>
 
   <div class="report-list">
@@ -12,10 +12,10 @@
       </div>
       <div class="report-actions">
         <a class="ghost" [href]="getReportUrl(report.fileName)" target="_blank" rel="noopener">
-          {{ openPdfLabel() }}
+          {{ data().openPdfLabel }}
         </a>
         <a class="primary" [href]="getReportUrl(report.fileName)" [download]="report.fileName">
-          {{ downloadLabel() }}
+          {{ data().downloadLabel }}
         </a>
       </div>
     </article>

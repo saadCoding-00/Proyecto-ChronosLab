@@ -1,55 +1,55 @@
 <section id="evaluador" class="time-evaluator">
   <div class="section-header">
-    <p class="section-kicker">{{ sectionKicker() }}</p>
-    <h2>{{ heading() }}</h2>
-    <p>{{ description() }}</p>
+    <p class="section-kicker">{{ data().sectionKicker }}</p>
+    <h2>{{ data().heading }}</h2>
+    <p>{{ data().description }}</p>
   </div>
 
   <form [formGroup]="form" class="evaluator-form">
     <div class="form-grid">
       <label class="form-field">
-        <span>{{ nameLabel() }}</span>
-        <input type="text" formControlName="name" [placeholder]="namePlaceholder()" />
+        <span>{{ data().labels.name }}</span>
+        <input type="text" formControlName="name" [placeholder]="data().placeholders.name" />
       </label>
       <label class="form-field">
-        <span>{{ lastNameLabel() }}</span>
-        <input type="text" formControlName="lastName" [placeholder]="lastNamePlaceholder()" />
+        <span>{{ data().labels.lastName }}</span>
+        <input type="text" formControlName="lastName" [placeholder]="data().placeholders.lastName" />
       </label>
       <label class="form-field">
-        <span>{{ ageLabel() }}</span>
-        <input type="number" min="0" max="120" formControlName="age" [placeholder]="agePlaceholder()" />
+        <span>{{ data().labels.age }}</span>
+        <input type="number" min="0" max="120" formControlName="age" [placeholder]="data().placeholders.age" />
       </label>
     </div>
 
     <label class="form-field full-width">
-      <span>{{ notesLabel() }}</span>
-      <textarea rows="3" formControlName="notes" [placeholder]="notesPlaceholder()"></textarea>
+      <span>{{ data().labels.notes }}</span>
+      <textarea rows="3" formControlName="notes" [placeholder]="data().placeholders.notes"></textarea>
     </label>
 
     <label class="form-field">
-      <span>{{ profileLabel() }}</span>
+      <span>{{ data().labels.profile }}</span>
       <select formControlName="profile">
-        <option value="estudiante">{{ optionEstudianteLabel() }}</option>
-        <option value="teletrabajador">{{ optionTeletrabajadorLabel() }}</option>
-        <option value="gamer">{{ optionGamerLabel() }}</option>
+        <option value="estudiante">{{ data().options.estudiante }}</option>
+        <option value="teletrabajador">{{ data().options.teletrabajador }}</option>
+        <option value="gamer">{{ data().options.gamer }}</option>
       </select>
     </label>
 
     <div class="form-grid">
       <label class="form-field">
-        <span>{{ studyHoursLabel() }}</span>
+        <span>{{ data().labels.studyHours }}</span>
         <input type="number" min="0" max="24" step="0.5" formControlName="studyHours" />
       </label>
       <label class="form-field">
-        <span>{{ workHoursLabel() }}</span>
+        <span>{{ data().labels.workHours }}</span>
         <input type="number" min="0" max="24" step="0.5" formControlName="workHours" />
       </label>
       <label class="form-field">
-        <span>{{ gamingHoursLabel() }}</span>
+        <span>{{ data().labels.gamingHours }}</span>
         <input type="number" min="0" max="24" step="0.5" formControlName="gamingHours" />
       </label>
       <label class="form-field">
-        <span>{{ socialHoursLabel() }}</span>
+        <span>{{ data().labels.socialHours }}</span>
         <input type="number" min="0" max="24" step="0.5" formControlName="socialHours" />
       </label>
     </div>
@@ -57,10 +57,10 @@
 
   <div class="results">
     <div class="results-summary">
-      <h3>{{ resultTitle() }}</h3>
-      <p class="result-value">{{ productivePercent }}% {{ productiveLabel() }}</p>
+      <h3>{{ data().labels.result }}</h3>
+      <p class="result-value">{{ productivePercent }}% {{ data().labels.productive }}</p>
       <p class="result-detail">
-        {{ productiveHoursLabel() }}: {{ productiveHours }} / {{ totalHours }} {{ hoursLabel() }}
+        {{ data().labels.productiveHours }}: {{ productiveHours }} / {{ totalHours }} {{ data().labels.hours }}
       </p>
     </div>
 
@@ -75,12 +75,12 @@
     </div>
 
     <div class="result-message">
-      <h4>{{ recommendationTitle() }}</h4>
+      <h4>{{ data().labels.recommendation }}</h4>
       <p>{{ message }}</p>
     </div>
   </div>
 
   <button type="button" class="primary pdf-button" (click)="generatePdf()">
-    {{ pdfButtonLabel() }}
+    {{ data().labels.pdfButton }}
   </button>
 </section>
